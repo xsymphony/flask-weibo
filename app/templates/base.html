@@ -6,6 +6,7 @@
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 {% endblock %}
 
 {% block navbar %}
@@ -26,9 +27,16 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                <li>
+                    <a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a>
+                </li>
+                <li>
+                <a href="{{ url_for('auth.logout') }}">Log Out</a>
+                </li>
                 {% else %}
-                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                <li>
+                <a href="{{ url_for('auth.login') }}">Log In</a>
+                </li>
                 {% endif %}
             </ul>
         </div>

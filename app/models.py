@@ -119,7 +119,7 @@ class User(UserMixin, db.Model):
 
     def __init__(self, **kwargs):
     	super(User, self).__init__(**kwargs)
-        self.follow(self)
+        #self.follow(self)
     	if self.role is None:
     		if self.email == current_app.config['FLASKY_ADMIN']:
     			self.role = Role.query.filter_by(permissions=0xff).first()
@@ -182,13 +182,13 @@ class User(UserMixin, db.Model):
                 db.session.rollback()
 
     #默认关注自己
-    @staticmethod
-    def add_self_follows():
-        for user in User.query.all():
-            if not user.is_following(user):
-                user.follow(user)
-                db.session.add(user)
-                db.session.commit()
+#    @staticmethod
+#    def add_self_follows():
+#        for user in User.query.all():
+#            if not user.is_following(user):
+#                user.follow(user)
+#                db.session.add(user)
+#                db.session.commit()
 
 
 class AnonymousUser(AnonymousUserMixin):

@@ -156,7 +156,7 @@ def unfollow(username):
 def followers(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
-        flash('Invalid user.')
+        flash(u'无效的用户！')
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
     pagination = user.followers.paginate(
@@ -173,7 +173,7 @@ def followers(username):
 def followed_by(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
-        flash('Invalid user.')
+        flash(u'无效的用户！')
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
     pagination = user.followed.paginate(

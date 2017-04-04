@@ -1,13 +1,15 @@
-Dear {{ user.username }},
+亲爱的 {{ user.username }},
 
-Welcome to Flasky!
+欢迎来到我的个人微博系统!
 
-To confirm your account please click on the following link:
+为了验证你的帐号，请点击下面的链接：
 
 {{ url_for('auth.confirm', token=token, _external=True) }}
 
-Sincerely,
+来自
 
-The Flasky Team
+【微博管理员】
 
-Note: replies to this email address are not monitored.
+-----------------------------------------
+
+请不要回复此邮件！
